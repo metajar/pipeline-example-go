@@ -15,7 +15,10 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: example-helloserver:${CICD_EXECUTION_SEQUENCE}
+      pushRemote: true
+      registry: registry.dualwave.dev
 - name: Deploy
   steps:
   - applyYamlConfig:
       path: ./deployment.yaml
+notification: {}
