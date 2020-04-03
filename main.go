@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 	"log"
+	"net/http"
 )
 
-const webContent = "Hello World!"
+const webContent = "<h1>Hello World!</h1>"
 
 func main() {
 	http.HandleFunc("/", helloHandler)
