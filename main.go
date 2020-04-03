@@ -4,9 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 )
-
-const webContent = "<h1>Hello World!</h1>"
 
 func main() {
 	http.HandleFunc("/", helloHandler)
@@ -14,5 +13,9 @@ func main() {
 }
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, webContent)
+	name, err := os.Hostname()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Fprint(w, fmt.Sprintf("<h1>%v</h1>", name))
 }
